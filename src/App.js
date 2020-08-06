@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
-import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
+//import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
+import { ThemeProvider as MuiThemeProvider } from "@material-ui/core/styles";
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 
 //components
@@ -10,25 +11,25 @@ import Navbar from "./components/Navbar";
 import home from "./pages/home";
 import login from "./pages/login";
 import signup from "./pages/signup";
-
 const theme = createMuiTheme({
   palette: {
     primary: {
       light: "#33c9dc",
-      main: "#00dcd4",
-      dark: "#008394",
+      main: "#3578E5",
+      dark: "#3578E5",
       contrastText: "#fff",
     },
     secondary: {
       light: "#ff6333",
-      main: "#0ff3d00",
-      dark: "#d22a00",
+      main: "#ff3d00",
+      dark: "#b22a00",
       contrastText: "#fff",
     },
+    tertiary: {},
   },
-  typography:{
-    useNextVariants:true
-  }
+  typography: {
+    useNextVariants: true,
+  },
 });
 
 class App extends Component {
