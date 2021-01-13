@@ -18,26 +18,24 @@ const styles = (theme) => ({
 });
 
 class login extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props); 
     this.state = {
       email: "",
       password: "",
-      errors: {},
+      errors: {}
     };
   }
   componentWillReceiveProps(nextProps) {
     if (nextProps.UI.errors) {
-      this.setState({
-        errors: nextProps.UI.errors,
-      });
+      this.setState({ errors: nextProps.UI.errors});
     }
   }
   handleSubmit = (event) => {
     event.preventDefault();
     const userData = {
       email: this.state.email,
-      password: this.state.password,
+      password: this.state.password
     };
     this.props.loginUser(userData, this.props.history);
   };
@@ -47,11 +45,8 @@ class login extends Component {
     });
   };
   render() {
-    const {
-      classes,
-      UI: { loading },
-    } = this.props;
-    const { errors } = this.state;
+      const { classes, UI: { loading }} = this.props;
+      const { errors } = this.state;
     return (
       <Grid container className={classes.form}>
         <Grid item sm></Grid>
@@ -125,12 +120,9 @@ login.propTypes = {
 };
 const mapStateToProps = (state) => ({
   user: state.user,
-  UI: state.UI,
+  UI: state.UI
 });
 const mapActionsToProps = {
-  loginUser,
+  loginUser
 };
-export default connect(
-  mapStateToProps,
-  mapActionsToProps
-)(withStyles(styles)(login));
+export default connect( mapStateToProps,  mapActionsToProps)(withStyles(styles)(login));
