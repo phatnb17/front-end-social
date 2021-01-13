@@ -73,13 +73,12 @@ const styles = (theme) => ({
 });
 
 class Profile extends Component {
-  handleImageChange(e) {
-    const image = e.target.files[0];
-    //send to server
+  handleImageChange = (event) => {
+    const image = event.target.files[0];
     const formData = new FormData();
     formData.append("image", image, image.name);
     this.props.uploadImage(formData);
-  }
+  };
   handleEditPicture = () => {
     const fileInput = document.getElementById("imageInput");
     fileInput.click();
@@ -93,8 +92,8 @@ class Profile extends Component {
       user: {
         credentials: { handle, createdAt, imageUrl, bio, website, location },
         loading,
-        authenticated,
-      },
+        authenticated
+      }
     } = this.props;
 
     let profileMarkup = !loading ? (
@@ -109,11 +108,11 @@ class Profile extends Component {
                 hidden="hidden"
                 onChange={this.handleImageChange}
               />
-              <Tooltip title="Edit profile picture" placement="top">
-                <IconButton onClick={this.handleEditPicture} className="button">
-                  <EditIcon color="primary" />
-                </IconButton>
-              </Tooltip>
+             <Tooltip title="Edit profile picture" placement="top">
+             <IconButton onClick={this.handleEditPicture} className="button">
+                <EditIcon color="primary"/> 
+              </IconButton>
+             </Tooltip>
             </div>
             <hr />
             <div className="profile-details">
@@ -138,27 +137,27 @@ class Profile extends Component {
                 <Fragment>
                   <LinkIcon color="primary" />
                   <a href={website} target="_blank" rel="noopener noreferrer">
-                    {" "}
+                    {' '}
                     {website}
                   </a>
                   <hr />
                 </Fragment>
               )}
-              <CalendarToday color="primary" />{" "}
-              <span>Joined {dayjs(createdAt).format("MMM YYYY")}</span>
+              <CalendarToday color="primary" />{' '}
+              <span>Joined {dayjs(createdAt).format('MMM YYYY')}</span>
             </div>
             <Tooltip title="Logout" placement="top">
-              <IconButton onClick={this.handleLogout}>
-                <KeyboardReturn color="primary" />
+             <IconButton onClick={this.handleLogout}>
+                <KeyboardReturn color="primary"/> 
               </IconButton>
-            </Tooltip>
+            </Tooltip>  
             <EditDetails />
           </div>
         </Paper>
       ) : (
-        <Paper className="classes.paper">
+        <Paper className={classes.paper}>
           <Typography variant="body2" align="center">
-            No profile found, please login again.
+            No profile found, please login again
           </Typography>
           <div className={classes.buttons}>
             <Button
@@ -180,23 +179,23 @@ class Profile extends Component {
           </div>
         </Paper>
       )
-    ) : (
-      <p>loading..</p>
-    );
+    ) : (<p>loading..</p>);
 
     return profileMarkup;
   }
 }
+
 const mapStateToProps = (state) => ({
-  user: state.user,
+  user: state.user
 });
+
 const mapActionsToProps = { logoutUser, uploadImage };
 
 Profile.propTypes = {
   logoutUser: PropTypes.func.isRequired,
   uploadImage: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 export default connect(
