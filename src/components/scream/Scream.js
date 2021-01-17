@@ -15,11 +15,8 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 //icons
 import ChatIcon from "@material-ui/icons/Chat";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 
 import { connect } from "react-redux";
-import { likeScream, unlikeScream } from "../../redux/actions/dataActions";
 
 const styles = {
   card: {
