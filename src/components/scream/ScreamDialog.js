@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
-import MyButton from '../util/MyButton';
+import MyButton from '../../util/MyButton';
 import LikeButton from './LikeButton';
-//import Comments from './Comments';
+import Comments from './Comments';
 //import CommentForm from './CommentForm';
 import dayjs from 'dayjs';
 import { Link } from 'react-router-dom';
@@ -19,7 +19,7 @@ import UnfoldMore from '@material-ui/icons/UnfoldMore';
 import ChatIcon from '@material-ui/icons/Chat';
 // Redux stuff
 import { connect } from 'react-redux';
-import { getScream, clearErrors } from '../redux/actions/dataActions';
+import { getScream, clearErrors } from '../../redux/actions/dataActions';
 
 const styles = (theme) => ({
   ...theme.spreadThis,
@@ -45,10 +45,7 @@ const styles = (theme) => ({
     marginTop: 50,
     marginBottom: 50
   },
-  invisibleSeparator:{
-      border:'none',
-      margin:4
-  }
+  
 });
 
 class ScreamDialog extends Component {
@@ -128,9 +125,9 @@ class ScreamDialog extends Component {
           </MyButton>
           <span>{commentCount} comments</span>
         </Grid>
-        {/* <hr className={classes.visibleSeparator} />
-        <CommentForm screamId={screamId} />
-        <Comments comments={comments} /> */}
+        <hr className={classes.visibleSeparator} />
+        {/* <CommentForm screamId={screamId} /> */}
+        <Comments comments={comments} />
       </Grid>
     );
     return (
