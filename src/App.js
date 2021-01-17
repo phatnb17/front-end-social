@@ -21,24 +21,8 @@ import signup from "./pages/signup";
 import user from "./pages/user";
 import axios from "axios";
 
-const theme = createMuiTheme(themeFile);
-// useState  start
-// const App = () => {
-//   const [authenticated, setAuthenticated] = React.useState(false);
-//   React.useEffect(() => {
-//     const token = localStorage.FBIdToken;
-//     if (token) {
-//       const decodedToken = jwtDecode(token);
-//       if (decodedToken.exp * 1000 < Date.now()) {
-//         window.location.href = "/login";
-//         setAuthenticated(false);
-//       } else {
-//         setAuthenticated(true);
-//       }
-//       // console.log(decodedToken);
-//     }
-//   }, []);
-//end
+    const theme = createMuiTheme(themeFile);
+// axios.defaults.baseURL='https://asia-northeast1-tutorial-267c7.cloudfunctions.net/api'
 
 //star run only chrome
 const token = localStorage.FBIdToken;
@@ -52,7 +36,6 @@ if (token) {
     axios.defaults.headers.common['Authorization']=token;
     store.dispatch(getUserData());
   }
-  // console.log(decodedToken);
 }
 
 class App extends Component {

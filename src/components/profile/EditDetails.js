@@ -83,7 +83,7 @@ class EditDetails extends Component {
               <TextField
                 name="bio"
                 type="text"
-                label="Bio"
+                label="BIO"
                 multiline
                 rows="3"
                 placeholder="A short bio about yourself"
