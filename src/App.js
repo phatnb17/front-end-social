@@ -9,8 +9,8 @@ import jwtDecode from "jwt-decode";
 //redux
 import { Provider } from "react-redux";
 import store from "./redux/store";
-import {SET_AUTHENTICATED} from "./redux/types";
-import {logoutUser,getUserData} from "./redux/actions/userActions";
+import { SET_AUTHENTICATED } from "./redux/types";
+import { logoutUser, getUserData } from "./redux/actions/userActions";
 //components
 import Navbar from "./components/layout/Navbar";
 import AuthRoute from "./util/AuthRoute";
@@ -21,8 +21,10 @@ import signup from "./pages/signup";
 import user from "./pages/user";
 import axios from "axios";
 
-    const theme = createMuiTheme(themeFile);
-// axios.defaults.baseURL='https://asia-northeast1-tutorial-267c7.cloudfunctions.net/api'
+const theme = createMuiTheme(themeFile);
+
+axios.defaults.baseURL =
+  "https://asia-northeast1-tutorial-267c7.cloudfunctions.net/api";
 
 //star run only chrome
 const token = localStorage.FBIdToken;
@@ -32,8 +34,8 @@ if (token) {
     store.dispatch(logoutUser());
     window.location.href = "/login";
   } else {
-    store.dispatch({type: SET_AUTHENTICATED});
-    axios.defaults.headers.common['Authorization']=token;
+    store.dispatch({ type: SET_AUTHENTICATED });
+    axios.defaults.headers.common["Authorization"] = token;
     store.dispatch(getUserData());
   }
 }
@@ -49,18 +51,14 @@ class App extends Component {
             <div className="container">
               <Switch>
                 <Route exact path="/" component={home} />
-                <AuthRoute
+                <AuthRoute exact path="/login" component={login} />
+                <AuthRoute exact path="/signup" component={signup} />
+                <Route exact path="/users/:handle" component={user} />
+                <Route
                   exact
-                  path="/login"
-                  component={login}
+                  path="/users/:handle/scream/:screamId"
+                  component={user}
                 />
-                <AuthRoute
-                  exact
-                  path="/signup"
-                  component={signup}
-                />
-                <Route exact path="/users/:handle" component={user}/>
-                <Route exact path="/users/:handle/scream/:screamId" component={user}/>
               </Switch>
             </div>
           </Router>

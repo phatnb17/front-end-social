@@ -5,10 +5,18 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Launch Edge",
+      "request": "launch",
+      "type": "pwa-msedge",
+      "url": "https://tutorial-267c7.firebaseio.com/",
+      "webRoot": "${workspaceFolder}"
+    },
+       
+    {
       "name": "Launch Chrome",
       "request": "launch",
       "type": "pwa-chrome",
-      "url": "http://localhost:8080",
+      "url": "https://tutorial-267c7.firebaseio.com/",
       "webRoot": "${workspaceFolder}/app.js"
     }
   ]
